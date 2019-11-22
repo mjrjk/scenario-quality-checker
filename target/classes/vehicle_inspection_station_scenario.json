@@ -1,0 +1,220 @@
+{
+  "title": "Stacja kontroli pojazdów",
+  "actors": [
+    "klient"
+  ],
+  "sysactors": [
+    "system"
+  ],
+  "steps": [
+    {
+      "stepNum": 1,
+      "content": [
+        "Klient parkuje na stacji"
+      ],
+      "substeps": [],
+      "returnPath": []
+    },
+    {
+      "stepNum": 2,
+      "content": [
+        "Klient oddaje dowód rejestracyjny i kluczyki"
+      ],
+      "substeps": [],
+      "returnPath": []
+    },
+    {
+      "stepNum": 3,
+      "content": [
+        "FOR EACH",
+        "element samochodu"
+      ],
+      "substeps": [
+        {
+          "stepNum": 1,
+          "content": [
+            "Diagnosta sprawdza działanie"
+          ],
+          "substeps": [],
+          "returnPath": []
+        },
+        {
+          "stepNum": 2,
+          "content": [
+            "System generuje raport"
+          ],
+          "substeps": [],
+          "returnPath": []
+        },
+        {
+          "stepNum": 3,
+          "content": [
+            "IF",
+            "Działanie elementu jest prawidłowe"
+          ],
+          "substeps": [
+            {
+              "stepNum": 1,
+              "content": [
+                "System drukuje zaświadczenie o możliwości poruszania się pojazdem"
+              ],
+              "substeps": [],
+              "returnPath": []
+            }
+          ],
+          "returnPath": []
+        },
+        {
+          "stepNum": 4,
+          "content": [
+            "IF",
+            "Usterka jest drobna"
+          ],
+          "substeps": [
+            {
+              "stepNum": 1,
+              "content": [
+                "System drukuje zaświadczenie tymczasowe na okres 14 dni"
+              ],
+              "substeps": [],
+              "returnPath": []
+            },
+            {
+              "stepNum": 2,
+              "content": [
+                "Diagnosta oddaje dowód rejestracyjny"
+              ],
+              "substeps": [],
+              "returnPath": []
+            },
+            {
+              "stepNum": 3,
+              "content": [
+                "IF",
+                "Klient decyduje się naprawić samochód na miejscu"
+              ],
+              "substeps": [
+                {
+                  "stepNum": 1,
+                  "content": [
+                    "Klient zosawia samochód do naprawy"
+                  ],
+                  "substeps": [],
+                  "returnPath": []
+                },
+                {
+                  "stepNum": 2,
+                  "content": [
+                    "Po naprawie"
+                  ],
+                  "substeps": [],
+                  "returnPath": [
+                    3
+                  ]
+                }
+              ],
+              "returnPath": []
+            },
+            {
+              "stepNum": 4,
+              "content": [
+                "ELSE"
+              ],
+              "substeps": [
+                {
+                  "stepNum": 1,
+                  "content": [
+                    "Diagnosta oddaje dowód i kluczyki"
+                  ],
+                  "substeps": [],
+                  "returnPath": []
+                },
+                {
+                  "stepNum": 2,
+                  "content": [
+                    "Klient odjeżdża"
+                  ],
+                  "substeps": [],
+                  "returnPath": []
+                },
+                {
+                  "stepNum": 3,
+                  "content": [
+                    "Przed upływem 14 dni klient wraca do punktu 1"
+                  ],
+                  "substeps": [],
+                  "returnPath": [
+                    1
+                  ]
+                }
+              ],
+              "returnPath": []
+            },
+            {
+              "stepNum": 5,
+              "content": [
+                "IF",
+                "Usterka poważna"
+              ],
+              "substeps": [
+                {
+                  "stepNum": 1,
+                  "content": [
+                    "Diagnosta zatrzymuje dowód rejestracyjny"
+                  ],
+                  "substeps": [],
+                  "returnPath": []
+                },
+                {
+                  "stepNum": 2,
+                  "content": [
+                    "System drukuje zaświadczenie o zakazie poruszania się pojazdem"
+                  ],
+                  "substeps": [],
+                  "returnPath": []
+                },
+                {
+                  "stepNum": 3,
+                  "content": [
+                    "Klient otrzymuje samochód na lawecie"
+                  ],
+                  "substeps": [],
+                  "returnPath": [
+                    1
+                  ]
+                }
+              ],
+              "returnPath": []
+            }
+          ],
+          "returnPath": []
+        }
+      ],
+      "returnPath": []
+    },
+    {
+      "stepNum": 4,
+      "content": [
+        "Diagnosta podbija dowód i kluczyki"
+      ],
+      "substeps": [],
+      "returnPath": []
+    },
+    {
+      "stepNum": 5,
+      "content": [
+        "Diagnosta oddaje dowód i kluczyki"
+      ],
+      "substeps": [],
+      "returnPath": []
+    },
+    {
+      "stepNum": 6,
+      "content": [
+        "Klient odjeżdża"
+      ],
+      "substeps": [],
+      "returnPath": []
+    }
+  ]
+}
