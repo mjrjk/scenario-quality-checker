@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ScenarioQualityCheckerController {
-        @RequestMapping(method = RequestMethod.GET, path = "/hello")
-        public String satHello() {
-            return "Hello world";
-        }
+    @RequestMapping(method = RequestMethod.GET, path = "/hello")
+    public String satHello() {
+        return "Hello world";
+    }
 }

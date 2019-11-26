@@ -22,7 +22,7 @@ public class JSONfileReader {
 
     public String toString(String filename) {
 
-        String filepath = getFileFromResources(filename).getPath();
+        String filepath = getFileFromResources(filename + ".json").getPath();
         String content = "";
         try {
             content = new String ( Files.readAllBytes( Paths.get(filepath) ) );
