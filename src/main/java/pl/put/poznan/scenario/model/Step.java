@@ -1,9 +1,11 @@
 package pl.put.poznan.scenario.model;
 
+import pl.put.poznan.scenario.logic.counting.CountingVisitor;
+
 import java.util.List;
 
-public class Step {
-
+public class Step
+{
     private Integer stepNum;
     private List<String> content;
     private List<Step> substeps;

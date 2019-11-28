@@ -8,7 +8,8 @@ import java.nio.file.Paths;
 
 public class JSONfileReader {
 
-    private File getFileFromResources(String fileName) {
+    private File getFileFromResources(String fileName)
+    {
         ClassLoader classLoader = getClass().getClassLoader();
 
         URL resource = classLoader.getResource(fileName);
@@ -17,11 +18,10 @@ public class JSONfileReader {
         } else {
             return new File(resource.getFile());
         }
-
     }
 
-    public String toString(String filename) {
-
+    public String toString(String filename)
+    {
         String filepath = getFileFromResources(filename + ".json").getPath();
         String content = "";
         try {
@@ -31,6 +31,5 @@ public class JSONfileReader {
             e.printStackTrace();
         }
         return content;
-
     }
 }

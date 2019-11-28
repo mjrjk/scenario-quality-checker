@@ -1,15 +1,27 @@
 package pl.put.poznan.scenario.model;
 
+import pl.put.poznan.scenario.logic.counting.CountingVisitor;
+
 import java.util.List;
 
-public class Scenario {
-
+public class Scenario
+{
     private String title;
     private List<String> actors;
     private List<String> sysactors;
     private List<Step> steps;
 
     public Scenario() { }
+
+    public int acceptCounting(CountingVisitor visitor)
+    {
+        return visitor.count(this.getSteps());
+        /*
+        for(Step step : steps) {
+            step.acceptCounting(visitor);
+        }
+        */
+    }
 
     public String getTitle() {
         return title;
