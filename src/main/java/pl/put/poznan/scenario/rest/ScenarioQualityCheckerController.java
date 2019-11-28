@@ -1,5 +1,6 @@
 package pl.put.poznan.scenario.rest;
 
+import com.google.gson.JsonSyntaxException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,7 +24,14 @@ public class ScenarioQualityCheckerController
         if(JSONfile == "{}" || JSONfile == "")
             return 0;
 
-        Scenario scenario = JSONtoObject.getObject(JSONfile);
+        Scenario scenario;
+        try {
+            scenario = JSONtoObject.getObject(JSONfile);
+        }
+        catch (JsonSyntaxException e) {
+            return 0;
+        }
+
         CountingVisitor visitor = new AllSteps();
         return scenario.acceptCounting(visitor);
     }
@@ -36,7 +44,14 @@ public class ScenarioQualityCheckerController
         if(JSONfile == "{}" || JSONfile == "")
             return 0;
 
-        Scenario scenario = JSONtoObject.getObject(JSONfile);
+        Scenario scenario;
+        try {
+            scenario = JSONtoObject.getObject(JSONfile);
+        }
+        catch (JsonSyntaxException e) {
+            return 0;
+        }
+
         CountingVisitor visitor = new KeywordsSteps();
         return scenario.acceptCounting(visitor);
     }

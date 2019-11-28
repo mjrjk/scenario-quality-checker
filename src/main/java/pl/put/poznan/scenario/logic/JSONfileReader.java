@@ -6,15 +6,15 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class JSONfileReader {
-
-    private File getFileFromResources(String fileName)
+public class JSONfileReader
+{
+    private File getFileFromResources(String filename)
     {
         ClassLoader classLoader = getClass().getClassLoader();
 
-        URL resource = classLoader.getResource(fileName);
+        URL resource = classLoader.getResource(filename);
         if (resource == null) {
-            throw new IllegalArgumentException("file is not found!");
+            throw new IllegalArgumentException("File is not found!");
         } else {
             return new File(resource.getFile());
         }

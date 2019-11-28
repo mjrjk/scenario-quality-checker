@@ -12,5 +12,4 @@ public class ScenarioQualityCheckerApplication
         SpringApplication.run(ScenarioQualityCheckerApplication.class, args);
         System.out.println("\n-----> Scenario Quality Checker <-----\n");
     }
-
 }
