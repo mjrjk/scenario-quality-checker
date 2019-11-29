@@ -10,6 +10,7 @@ import java.util.List;
 public class Step
 {
     private Integer stepNum;
+    private String actor;
     private List<String> content;
     private List<Step> substeps;
     private List<Integer> returnPath;
@@ -31,6 +32,10 @@ public class Step
     public void setStepNum(Integer stepNum) {
         this.stepNum = stepNum;
     }
+
+    public String getActor() { return actor; }
+
+    public void setActor(String actor) { this.actor = actor; }
 
     public List<String> getContent() {
         return content;

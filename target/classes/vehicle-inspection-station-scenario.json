@@ -1,14 +1,15 @@
 {
   "title": "Stacja kontroli pojazdów",
   "actors": [
-    "klient"
+    "klient", "diagnosta"
   ],
-  "sysactors": [
+  "sys actors": [
     "system"
   ],
   "steps": [
     {
       "stepNum": 1,
+      "actor": "klient",
       "content": [
         "Klient parkuje na stacji"
       ],
@@ -17,6 +18,7 @@
     },
     {
       "stepNum": 2,
+      "actor": "klient",
       "content": [
         "Klient oddaje dowód rejestracyjny i kluczyki"
       ],
@@ -25,6 +27,7 @@
     },
     {
       "stepNum": 3,
+      "actor": "",
       "content": [
         "FOR EACH",
         "element samochodu"
@@ -32,6 +35,7 @@
       "substeps": [
         {
           "stepNum": 1,
+          "actor": "diagnosta",
           "content": [
             "Diagnosta sprawdza działanie"
           ],
@@ -40,6 +44,7 @@
         },
         {
           "stepNum": 2,
+          "actor": "system",
           "content": [
             "System generuje raport"
           ],
@@ -48,6 +53,7 @@
         },
         {
           "stepNum": 3,
+          "actor": "",
           "content": [
             "IF",
             "Działanie elementu jest prawidłowe"
@@ -55,6 +61,7 @@
           "substeps": [
             {
               "stepNum": 1,
+              "actor": "system",
               "content": [
                 "System drukuje zaświadczenie o możliwości poruszania się pojazdem"
               ],
@@ -66,6 +73,7 @@
         },
         {
           "stepNum": 4,
+          "actor": "",
           "content": [
             "IF",
             "Usterka jest drobna"
@@ -73,6 +81,7 @@
           "substeps": [
             {
               "stepNum": 1,
+              "actor": "system",
               "content": [
                 "System drukuje zaświadczenie tymczasowe na okres 14 dni"
               ],
@@ -81,6 +90,7 @@
             },
             {
               "stepNum": 2,
+              "actor": "diagnosta",
               "content": [
                 "Diagnosta oddaje dowód rejestracyjny"
               ],
@@ -89,6 +99,7 @@
             },
             {
               "stepNum": 3,
+              "actor": "klient",
               "content": [
                 "IF",
                 "Klient decyduje się naprawić samochód na miejscu"
@@ -96,6 +107,7 @@
               "substeps": [
                 {
                   "stepNum": 1,
+                  "actor": "klient",
                   "content": [
                     "Klient zosawia samochód do naprawy"
                   ],
@@ -104,6 +116,7 @@
                 },
                 {
                   "stepNum": 2,
+                  "actor": "",
                   "content": [
                     "Po naprawie"
                   ],
@@ -117,12 +130,14 @@
             },
             {
               "stepNum": 4,
+              "actor": "",
               "content": [
                 "ELSE"
               ],
               "substeps": [
                 {
                   "stepNum": 1,
+                  "actor": "diagnosta",
                   "content": [
                     "Diagnosta oddaje dowód i kluczyki"
                   ],
@@ -131,6 +146,7 @@
                 },
                 {
                   "stepNum": 2,
+                  "actor": "klient",
                   "content": [
                     "Klient odjeżdża"
                   ],
@@ -139,6 +155,7 @@
                 },
                 {
                   "stepNum": 3,
+                  "actor": "klient",
                   "content": [
                     "Przed upływem 14 dni klient wraca do punktu 1"
                   ],
@@ -152,6 +169,7 @@
             },
             {
               "stepNum": 5,
+              "actor": "",
               "content": [
                 "IF",
                 "Usterka poważna"
@@ -159,6 +177,7 @@
               "substeps": [
                 {
                   "stepNum": 1,
+                  "actor": "diagnosta",
                   "content": [
                     "Diagnosta zatrzymuje dowód rejestracyjny"
                   ],
@@ -167,6 +186,7 @@
                 },
                 {
                   "stepNum": 2,
+                  "actor": "system",
                   "content": [
                     "System drukuje zaświadczenie o zakazie poruszania się pojazdem"
                   ],
@@ -175,6 +195,7 @@
                 },
                 {
                   "stepNum": 3,
+                  "actor": "klient",
                   "content": [
                     "Klient otrzymuje samochód na lawecie"
                   ],
@@ -194,6 +215,7 @@
     },
     {
       "stepNum": 4,
+      "actor": "diagnosta",
       "content": [
         "Diagnosta podbija dowód i kluczyki"
       ],
@@ -202,6 +224,7 @@
     },
     {
       "stepNum": 5,
+      "actor": "diagnosta",
       "content": [
         "Diagnosta oddaje dowód i kluczyki"
       ],
@@ -210,6 +233,7 @@
     },
     {
       "stepNum": 6,
+      "actor": "klient",
       "content": [
         "Klient odjeżdża"
       ],
