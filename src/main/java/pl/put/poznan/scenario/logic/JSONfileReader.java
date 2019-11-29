@@ -35,7 +35,7 @@ public class JSONfileReader
      * Converts JSON file to string.
      *
      * @param filename      filename of scenario
-     * @return              string with whole scenario
+     * @return              string containing whole scenario
      */
     public String toString(String filename)
     {
