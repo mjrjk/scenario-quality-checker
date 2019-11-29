@@ -1,0 +1,127 @@
+{
+  "title": "Rejestracja do lekarza rodzinnego",
+  "actors": [
+    "pacjent",
+    "lekarz",
+    "pielęgniarka"
+  ],
+  "sys actors": [
+    "system"
+  ],
+  "steps": [
+    {
+      "stepNum": 1,
+      "actor": "pacjent",
+      "content": [
+        "Pacjent mówi dzień dobry wszystkim w poczekalni"
+      ],
+      "substeps": [],
+      "returnPath": []
+    },
+    {
+      "stepNum": 2,
+      "actor": "pacjent",
+      "content": [
+        "Pacjent podaje swoje imię i nazwisko w recepcji"
+      ],
+      "substeps": [],
+      "returnPath": []
+    },
+    {
+      "stepNum": 3,
+      "actor": "pielęgniarka",
+      "content": [
+        "Pielęgniarka wpisuje dane pacjenta do systemu"
+      ],
+      "substeps": [],
+      "returnPath": []
+    },
+    {
+      "stepNum": 4,
+      "actor": "",
+      "content": [
+        "IF",
+        "W systemie znajduje się karta pacjenta"
+      ],
+      "substeps": [
+        {
+          "stepNum": 1,
+          "actor": "system",
+          "content": [
+            "System drukuje historię chorób"
+          ],
+          "substeps": [],
+          "returnPath": []
+        },
+        {
+          "stepNum": 2,
+          "actor": "pielęgniarka",
+          "content": [
+            "Pielęgniarka umieszcza dokumenty w teczce i wręcza pacjentowi"
+          ],
+          "substeps": [],
+          "returnPath": []
+        }
+      ],
+      "returnPath": []
+    },
+    {
+      "stepNum": 5,
+      "actor": "",
+      "content": [
+        "IF",
+        "Pacjent nie figuruje w systemie"
+      ],
+      "substeps": [
+        {
+          "stepNum": 1,
+          "actor": "pacjent",
+          "content": [
+            "Pacjent pokazuje pielęgniarce swój dowód osobisty"
+          ],
+          "substeps": [],
+          "returnPath": []
+        },
+        {
+          "stepNum": 2,
+          "actor": "",
+          "content": [
+            "FOR EACH",
+            "pole w formularzu"
+          ],
+          "substeps": [
+            {
+              "stepNum": 1,
+              "actor": "pielęgniarka",
+              "content": [
+                "Wypełnia danymi pacjenta"
+              ],
+              "substeps": [],
+              "returnPath": []
+            }
+          ],
+          "returnPath": []
+        }
+      ],
+      "returnPath": []
+    },
+    {
+      "stepNum": 6,
+      "actor": "pacjent",
+      "content": [
+        "Pacjent siada w poczekalni"
+      ],
+      "substeps": [],
+      "returnPath": []
+    },
+    {
+      "stepNum": 7,
+      "actor": "lekarz",
+      "content": [
+        "Zaprasza pacjenta do gabinetu"
+      ],
+      "substeps": [],
+      "returnPath": []
+    }
+  ]
+}
