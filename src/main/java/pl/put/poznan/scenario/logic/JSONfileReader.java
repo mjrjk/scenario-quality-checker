@@ -6,8 +6,19 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+/**
+ * JSONfileReader class processes JSON files with scenarios from resources folder
+ * to make it accessible as a string for other classes.
+ *
+ */
 public class JSONfileReader
 {
+    /**
+     * Accesses a JSON file from resources folder.
+     *
+     * @param filename      filename of scenario
+     * @return              JSON file
+     */
     private File getFileFromResources(String filename)
     {
         ClassLoader classLoader = getClass().getClassLoader();
@@ -20,6 +31,12 @@ public class JSONfileReader
         }
     }
 
+    /**
+     * Converts JSON file to string.
+     *
+     * @param filename      filename of scenario
+     * @return              string with whole scenario
+     */
     public String toString(String filename)
     {
         String filepath = getFileFromResources(filename + ".json").getPath();

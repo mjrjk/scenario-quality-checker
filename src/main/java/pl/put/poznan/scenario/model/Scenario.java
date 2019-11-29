@@ -16,6 +16,11 @@ public class Scenario
 
     public Scenario() { }
 
+    /**
+     * Calls accepting visitor function on every step.
+     *
+     * @param visitor       object visiting steps of scenario
+     */
     public void acceptCounting(CountingVisitor visitor)
     {
         for(Step step : steps)

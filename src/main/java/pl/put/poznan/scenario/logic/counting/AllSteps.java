@@ -16,11 +16,23 @@ public class AllSteps extends CountingVisitor
         return stepsNumber;
     }
 
+    /**
+     * Counts a number of all steps in scenario.
+     * It 'visits' every step and increments counter variable when
+     * called by acceptCounting function in Step class object.
+     *
+     * @param step      currently visited step
+     */
     public void count(Step step)
     {
         stepsNumber++;
     }
 
+    /**
+     * Sets stepsNumber variable to zero.
+     * Must be called after counting to reset the value.
+     *
+     */
     public void afterCounting()
     {
         stepsNumber = 0;

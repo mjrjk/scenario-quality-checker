@@ -14,7 +14,7 @@ import pl.put.poznan.scenario.model.Scenario;
 
 /**
  * This class is a REST Controller, which is responsible for processing incoming requests.
- * It invokes counting functions on scenario.
+ * It invokes scenario processing functions.
  *
  * @author Anna Lubawa
  */

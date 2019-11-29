@@ -17,6 +17,11 @@ public class Step
 
     public Step() { }
 
+    /**
+     * Accepts counting by visitor object.
+     *
+     * @param visitor       object visiting steps of scenario
+     */
     public void acceptCounting(CountingVisitor visitor)
     {
         visitor.count(this);
