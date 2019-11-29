@@ -1,7 +1,6 @@
 package pl.put.poznan.scenario.logic;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 import pl.put.poznan.scenario.model.Scenario;
 

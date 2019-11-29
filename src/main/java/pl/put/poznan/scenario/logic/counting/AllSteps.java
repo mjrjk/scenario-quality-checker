@@ -1,16 +1,28 @@
 package pl.put.poznan.scenario.logic.counting;
 
 import pl.put.poznan.scenario.model.Step;
-import java.util.List;
 
+/**
+ * AllSteps class counts all steps (including substeps) in scenario.
+ * It extends abstract class CountingVisitor and uses Visitor design pattern.
+ *
+ * @author Anna Lubawa
+ */
 public class AllSteps extends CountingVisitor
 {
-    public int count(List<Step> steps)
+    private int stepsNumber = 0;
+
+    public int getStepsNumber() {
+        return stepsNumber;
+    }
+
+    public void count(Step step)
     {
-        int count = steps.stream()
-                .map(step -> count(step.getSubsteps()))
-                .mapToInt(Integer::intValue)
-                .sum();
-        return steps.size() + count;
+        stepsNumber++;
+    }
+
+    public void afterCounting()
+    {
+        stepsNumber = 0;
     }
 }

@@ -1,9 +1,12 @@
 package pl.put.poznan.scenario.model;
 
 import pl.put.poznan.scenario.logic.counting.CountingVisitor;
-
 import java.util.List;
 
+/**
+ * Step class represents a single step in a scenario.
+ *
+ */
 public class Step
 {
     private Integer stepNum;
@@ -12,6 +15,14 @@ public class Step
     private List<Integer> returnPath;
 
     public Step() { }
+
+    public void acceptCounting(CountingVisitor visitor)
+    {
+        visitor.count(this);
+        if(!this.substeps.isEmpty())
+            for(Step step : substeps)
+                step.acceptCounting(visitor);
+    }
 
     public Integer getStepNum() {
         return stepNum;

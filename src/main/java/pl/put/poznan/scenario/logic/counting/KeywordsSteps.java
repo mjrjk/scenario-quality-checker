@@ -1,17 +1,27 @@
 package pl.put.poznan.scenario.logic.counting;
 
 import pl.put.poznan.scenario.model.Step;
+
 import java.util.List;
+
 
 public class KeywordsSteps extends CountingVisitor
 {
-    public int count(List<Step> steps)
+    private int stepsNumber = 0;
+
+    public int getStepsNumber() {
+        return stepsNumber;
+    }
+
+    public void count(Step step)
     {
-        return steps.stream()
-                .filter(KeywordsSteps::isKeyword)
-                .map(step -> count(step.getSubsteps())+1)
-                .mapToInt(Integer::intValue)
-                .sum();
+        if(isKeyword(step))
+            stepsNumber++;
+    }
+
+    public void afterCounting()
+    {
+        stepsNumber = 0;
     }
 
     private static boolean isKeyword(Step step)

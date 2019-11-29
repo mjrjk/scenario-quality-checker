@@ -1,9 +1,12 @@
 package pl.put.poznan.scenario.model;
 
 import pl.put.poznan.scenario.logic.counting.CountingVisitor;
-
 import java.util.List;
 
+/**
+ * Scenario class represents a scenario loaded from a JSON file and parsed to object.
+ *
+ */
 public class Scenario
 {
     private String title;
@@ -13,14 +16,12 @@ public class Scenario
 
     public Scenario() { }
 
-    public int acceptCounting(CountingVisitor visitor)
+    public void acceptCounting(CountingVisitor visitor)
     {
-        return visitor.count(this.getSteps());
-        /*
-        for(Step step : steps) {
+        for(Step step : steps)
+        {
             step.acceptCounting(visitor);
         }
-        */
     }
 
     public String getTitle() {
