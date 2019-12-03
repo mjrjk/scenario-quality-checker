@@ -1,0 +1,164 @@
+{
+  "title": "Rezerwowanie obiektu centrum sportowego",
+  "actors": [
+    "klient"
+  ],
+  "sys actors": [
+    "system"
+  ],
+  "steps": [
+    {
+      "stepNum": 1,
+      "actor": "klient",
+      "content": [
+        "Klient wybiera obiekt sportowy"
+      ],
+      "substeps": [],
+      "returnPath": []
+    },
+    {
+      "stepNum": 2,
+      "actor": "",
+      "content": [
+        "IF",
+        "Klient chce dodać rezerwację"
+      ],
+      "substeps": [
+        {
+          "stepNum": 1,
+          "actor": "klient",
+          "content": [
+            "Klient wybiera opcję dodania rezerwacji"
+          ],
+          "substeps": [],
+          "returnPath": []
+        },
+        {
+          "stepNum": 2,
+          "actor": "system",
+          "content": [
+            "System prezentuje aktualny stan rezerwacji"
+          ],
+          "substeps": [],
+          "returnPath": []
+        }
+      ],
+      "returnPath": []
+    },
+    {
+      "stepNum": 3,
+      "actor": "",
+      "content": [
+        "FOR EACH",
+        "Rezerwacja"
+      ],
+      "substeps": [
+        {
+          "stepNum": 1,
+          "actor": "system",
+          "content": [
+            "System prosi o podanie terminu rezerwacji"
+          ],
+          "substeps": [],
+          "returnPath": []
+        },
+        {
+          "stepNum": 2,
+          "actor": "klient",
+          "content": [
+            "IF",
+            "Termin wolny"
+          ],
+          "substeps": [
+            {
+              "stepNum": 1,
+              "actor": "system",
+              "content": [
+                "System informuje o dostępności terminu i pyta czy dodać rezerwację"
+              ],
+              "substeps": [],
+              "returnPath": []
+            },
+            {
+              "stepNum": 2,
+              "actor": "",
+              "content": [
+                "IF",
+                "Klient chce dodać rezerwację"
+              ],
+              "substeps": [
+                {
+                  "stepNum": 1,
+                  "actor": "system",
+                  "content": [
+                    "System informuje o poprawnym dodaniu rezerwacji"
+                  ],
+                  "substeps": [],
+                  "returnPath": []
+                },
+                {
+                  "stepNum": 2,
+                  "actor": "system",
+                  "content": [
+                    "System prezentuje zaktualizowany stan rezerwacji"
+                  ],
+                  "substeps": [],
+                  "returnPath": []
+                }
+              ],
+              "returnPath": []
+            },
+            {
+              "stepNum": 3,
+              "actor": "",
+              "content": [
+                "ELSE"
+              ],
+              "substeps": [
+                {
+                  "stepNum": 1,
+                  "actor": "system",
+                  "content": [
+                    "System informuje o niepowodzeniu w dodawaniu rezerwacji"
+                  ],
+                  "substeps": [],
+                  "returnPath": [
+                    3,
+                    1
+                  ]
+                }
+              ],
+              "returnPath": []
+            }
+          ],
+          "returnPath": []
+        },
+        {
+          "stepNum": 3,
+          "actor": "",
+          "content": [
+            "ELSE",
+            "System podaje informację o niedostępności obiektu i prosi o podanie innego terminu/rezygnację"
+          ],
+          "substeps": [
+            {
+              "stepNum": 1,
+              "actor": "klient",
+              "content": [
+                "IF",
+                "Podanie innego terminu"
+              ],
+              "substeps": [],
+              "returnPath": [
+                3,
+                1
+              ]
+            }
+          ],
+          "returnPath": []
+        }
+      ],
+      "returnPath": []
+    }
+  ]
+}
