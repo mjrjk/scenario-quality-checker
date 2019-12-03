@@ -17,12 +17,12 @@ Aktor systemowy: System<br />
 • Wyświetla się formularz.<br />
 • Bibliotekarz podaje dane książki.<br />
 • IF: Bibliotekarz pragnie dodać egzemplarze książki<br />
-    o Bibliotekarz wybiera opcję definiowania egzemplarzy<br />
-    o System prezentuje zdefiniowane egzemplarze<br />
-    o FOR EACH egzemplarz:<br />
-        • Bibliotekarz wybiera opcję dodania egzemplarza<br />
-        • System prosi o podanie danych egzemplarza<br />
-        • Bibliotekarz podaje dane egzemplarza i zatwierdza.<br />
-        • System informuje o poprawnym dodaniu egzemplarza i prezentuje zaktualizowaną listę egzemplarzy.<br />
+&nbsp; &nbsp; o Bibliotekarz wybiera opcję definiowania egzemplarzy<br />
+&nbsp; &nbsp; o System prezentuje zdefiniowane egzemplarze<br />
+&nbsp; &nbsp; o FOR EACH egzemplarz:<br />
+&nbsp; &nbsp; &nbsp; &nbsp; • Bibliotekarz wybiera opcję dodania egzemplarza<br />
+&nbsp; &nbsp; &nbsp; &nbsp; • System prosi o podanie danych egzemplarza<br />
+&nbsp; &nbsp; &nbsp; &nbsp; • Bibliotekarz podaje dane egzemplarza i zatwierdza.<br />
+&nbsp; &nbsp; &nbsp; &nbsp; • System informuje o poprawnym dodaniu egzemplarza i prezentuje zaktualizowaną listę egzemplarzy.<br />
 • Bibliotekarz zatwierdza dodanie książki.<br />
 • System informuje o poprawnym dodaniu książki.
