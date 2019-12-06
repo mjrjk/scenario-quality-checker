@@ -1,16 +1,17 @@
 package pl.put.poznan.scenario.rest;
 
 import com.google.gson.JsonSyntaxException;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.scenario.logic.JSONfileReader;
+import pl.put.poznan.scenario.logic.JSONfileWriter;
 import pl.put.poznan.scenario.logic.JSONtoObject;
 import pl.put.poznan.scenario.logic.counting.AllSteps;
 import pl.put.poznan.scenario.logic.counting.CountingVisitor;
 import pl.put.poznan.scenario.logic.counting.KeywordsSteps;
 import pl.put.poznan.scenario.logic.counting.NoActorSteps;
+import pl.put.poznan.scenario.logic.displaying.DisplayingVisitor;
+import pl.put.poznan.scenario.logic.displaying.ScenarioLevelViewer;
+import pl.put.poznan.scenario.logic.displaying.ScenarioViewer;
 import pl.put.poznan.scenario.model.Scenario;
 
 /**
@@ -19,7 +20,6 @@ import pl.put.poznan.scenario.model.Scenario;
  *
  * @author Anna Lubawa
  */
-
 @RestController
 public class ScenarioQualityCheckerController
 {
@@ -109,4 +109,65 @@ public class ScenarioQualityCheckerController
         visitor.afterCounting();
         return  result;
     }
+
+    /**
+     * Displays all steps in a scenario.
+     *
+     * @param filename      name of JSON file with a scenario
+     * @return              String with scenario with numbered steps.
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/show-scenario/{filename}")
+    public String showScenario(@PathVariable String filename)
+    {
+        String JSONfile = new JSONfileReader().toString(filename);
+
+        Scenario scenario;
+        try {
+            scenario = JSONtoObject.getObject(JSONfile);
+        }
+        catch (JsonSyntaxException e) {
+            return "Błędna struktura scenariusza.";
+        }
+
+        DisplayingVisitor visitor = new ScenarioViewer();
+        scenario.acceptDisplaying(visitor);
+        return ((ScenarioViewer) visitor).getScenarioText();
+    }
+
+    /**
+     * Displays steps in a scenario but only to certain level of substeps.
+     *
+     * @param filename      name of JSON file with a scenario
+     * @param level         level of displayed substeps
+     * @return              String with scenario with numbered steps.
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/show-scenario/{level}/{filename}")
+    public String showLevelScenario(@PathVariable String filename, @PathVariable int level)
+    {
+        String JSONfile = new JSONfileReader().toString(filename);
+
+        Scenario scenario;
+        try {
+            scenario = JSONtoObject.getObject(JSONfile);
+        }
+        catch (JsonSyntaxException e) {
+            return "Błędna struktura scenariusza.";
+        }
+
+        DisplayingVisitor visitor = new ScenarioLevelViewer(level);
+        scenario.acceptDisplaying(visitor);
+        return ((ScenarioLevelViewer) visitor).getScenarioText();
+    }
+
+    /**
+     * Creates new scenario from POST request
+     *
+     * @param title     name for new JSON file with a scenario
+     */
+    @RequestMapping(method = RequestMethod.POST, path = "/add-scenario/{title}")
+    public String addScenario(@PathVariable String title, @RequestBody Scenario scenario)
+    {
+        return JSONfileWriter.writeScenarioToFile(scenario, title);
+    }
 }
+
