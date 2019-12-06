@@ -11,6 +11,9 @@ import pl.put.poznan.scenario.logic.counting.AllSteps;
 import pl.put.poznan.scenario.logic.counting.CountingVisitor;
 import pl.put.poznan.scenario.logic.counting.KeywordsSteps;
 import pl.put.poznan.scenario.logic.counting.NoActorSteps;
+import pl.put.poznan.scenario.logic.displaying.DisplayingVisitor;
+import pl.put.poznan.scenario.logic.displaying.ScenarioLevelViewer;
+import pl.put.poznan.scenario.logic.displaying.ScenarioViewer;
 import pl.put.poznan.scenario.model.Scenario;
 
 /**
@@ -108,5 +111,41 @@ public class ScenarioQualityCheckerController
         int result = ((NoActorSteps) visitor).getStepsNumber();
         visitor.afterCounting();
         return  result;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/show-scenario/{filename}")
+    public String showScenario(@PathVariable String filename)
+    {
+        String JSONfile = new JSONfileReader().toString(filename);
+
+        Scenario scenario;
+        try {
+            scenario = JSONtoObject.getObject(JSONfile);
+        }
+        catch (JsonSyntaxException e) {
+            return "Błędna struktura scenariusza.";
+        }
+
+        DisplayingVisitor visitor = new ScenarioViewer();
+        scenario.acceptDisplaying(visitor);
+        return ((ScenarioViewer) visitor).getScenarioText();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/show-scenario/{level}/{filename}")
+    public String showLevelScenario(@PathVariable String filename, @PathVariable int level)
+    {
+        String JSONfile = new JSONfileReader().toString(filename);
+
+        Scenario scenario;
+        try {
+            scenario = JSONtoObject.getObject(JSONfile);
+        }
+        catch (JsonSyntaxException e) {
+            return "Błędna struktura scenariusza.";
+        }
+
+        DisplayingVisitor visitor = new ScenarioLevelViewer(level);
+        scenario.acceptDisplaying(visitor);
+        return ((ScenarioLevelViewer) visitor).getScenarioText();
     }
 }
