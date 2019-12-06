@@ -21,7 +21,7 @@ public class Scenario
     public Scenario() { }
 
     /**
-     * Calls accepting visitor function on every step.
+     * Calls accepting counting visitor function on every step.
      *
      * @param visitor       object visiting steps of scenario
      */
@@ -33,6 +33,11 @@ public class Scenario
         }
     }
 
+    /**
+     * Calls accepting displaying visitor function on every step.
+     *
+     * @param visitor       object visiting steps of scenario
+     */
     public void acceptDisplaying(DisplayingVisitor visitor)
     {
         if(visitor instanceof ScenarioViewer)

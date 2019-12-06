@@ -22,7 +22,6 @@ import pl.put.poznan.scenario.model.Scenario;
  *
  * @author Anna Lubawa
  */
-
 @RestController
 public class ScenarioQualityCheckerController
 {
@@ -113,6 +112,12 @@ public class ScenarioQualityCheckerController
         return  result;
     }
 
+    /**
+     * Displays all steps in a scenario.
+     *
+     * @param filename      name of JSON file with a scenario
+     * @return              String with scenario with numbered steps.
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/show-scenario/{filename}")
     public String showScenario(@PathVariable String filename)
     {
@@ -131,6 +136,13 @@ public class ScenarioQualityCheckerController
         return ((ScenarioViewer) visitor).getScenarioText();
     }
 
+    /**
+     * Displays steps in a scenario but only to certain level of substeps.
+     *
+     * @param filename      name of JSON file with a scenario
+     * @param level         level of displayed substeps
+     * @return              String with scenario with numbered steps.
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/show-scenario/{level}/{filename}")
     public String showLevelScenario(@PathVariable String filename, @PathVariable int level)
     {
