@@ -1,11 +1,9 @@
 package pl.put.poznan.scenario.rest;
 
 import com.google.gson.JsonSyntaxException;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.scenario.logic.JSONfileReader;
+import pl.put.poznan.scenario.logic.JSONfileWriter;
 import pl.put.poznan.scenario.logic.JSONtoObject;
 import pl.put.poznan.scenario.logic.counting.AllSteps;
 import pl.put.poznan.scenario.logic.counting.CountingVisitor;
@@ -160,4 +158,16 @@ public class ScenarioQualityCheckerController
         scenario.acceptDisplaying(visitor);
         return ((ScenarioLevelViewer) visitor).getScenarioText();
     }
+
+    /**
+     * Creates new scenario from POST request
+     *
+     * @param title     name for new JSON file with a scenario
+     */
+    @RequestMapping(method = RequestMethod.POST, path = "/add-scenario/{title}")
+    public String addScenario(@PathVariable String title, @RequestBody Scenario scenario)
+    {
+        return JSONfileWriter.writeScenarioToFile(scenario, title);
+    }
 }
+
